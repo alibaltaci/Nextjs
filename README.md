@@ -244,3 +244,14 @@
         - Farklı user request ‘lerinde tekrar tekrar oluştrulmasına gerek olmayan, hali hazırda bir tane olan sayflar için Static Generation.
         - Sıkça güncellenen bir veriye sahipsek, user ‘ın url ‘e gireceği parametreler requestimizi etkiliyor ise ( Veriyi farklı parametrelere göre tekrardan yakalamamız gerekiyorsa ) o zaman her user requestinde re-render işlemi yapan Server-Side Rendering ‘i kullanmamız gerekir.
         - Statik Generation ‘a göre daha yavaş olacak ama her zaman güncel (up to date) olacaktır.
+
+- **getStaticProps:**
+    - Naxtjs içerisinde Static Generation yöntemini kullanarak veriyi yakalayabileceğimiz bir alan.
+    - getStaticProps kodun sadece Server Side ‘da çalışmasını sağlar.
+    - Sadece Nextjs componet ‘leirnden export edilebilir.
+    - Yani Components klasörü altındaki herhangi bir react componenti altından export edemem.
+    - Çünkü react ‘in bir component ‘i render edebilmesi için tüm verinin yakalanmış ve hazır olması gereklidir.
+    - Built Time ‘da çalışır ve sonrasındaki tüm request ‘ler için tekrar tekrar kullanılır. (Production ortamında)
+    - Development ortamında ise her request için yeniden oluşturulur.
+    - getStaticProps sadece içindeki kodun Server-Side ‘da çalıştığını garanti eder. Clint-Side ‘da çalışmayacağından emin olabiliriz.
+    - İçindeki kodlar JS Bundle ‘a da dahil edilmez. Yani hiçbir şekilde tarayıcıya gitmediğinden emin olabiliriz.
