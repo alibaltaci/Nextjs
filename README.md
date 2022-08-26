@@ -185,3 +185,62 @@
                 - ***Server Side Rendering:*** Her user requestinde (each request) yeni bir HTML oluşturur.
                 
                 ![Screenshot_3.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2421b597-115a-42d5-8300-138be23ddb31/Screenshot_3.png)
+
+- **Pre-rendering and Data Fetching**
+    - **Pre-rendering:**   Nextjs de tüm sayfalar default olarak Pre-render edilir. Yani Nextjs önceden gidip HTML  sayfalarını gider  yakalar ve oluşturur. Bunların Client-side JS tarafından yapılmasını beklemez.
+        - Pre-rendering performanslı SEO işlemleri için olumlu bir özelliktir.
+        - Her oluşturulan HTML minimal JS kodu (fully functional) ile oluşturulur. Bu ***Code spliting*** açısından önemlidir.
+        - Bir sayfa browser tarafından yüklendiği zaman JS kodu çalışır ve onu interaktif hale (Kullanıcının etkileşim kurabileceği) dönüştürür.
+        - Bu process e ***hydration*** ismi verilir.
+        - **Pre-rendiring in olup olmadığını nasıl kontrol ederiz? (Check That Pre-renderin Happening)**
+            - Nextjs ‘de
+                - JS ‘yi Browser ‘ımızda kapatacağız.
+                - Developer Tools ‘u açıyoruz —> Ayarlar —> Debugger —> Disable JavaScript ‘i seçiyoruz.
+                - Bu şekilde yapınca [localhost](http://localhost) olduğu için CSS yüklenmez.
+                - Pre-render işlemi gerçekleştiği için statik bir HTML sayfasını görebiliriz.
+            - Create-reacta-app ile oluşturulmuş sayfada
+                - Yukarıdaki gibi Disable JavaScript diyoruz.
+                - create-react-app ‘de pre-render işlemi gerçekleşmediği için “You need to enable JavaScript to run this app. “ yazısını görürüz.
+                - Statik olarak yakalanmış bir HTML sayfası görmüyoruz.
+                
+                ![Screenshot_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8810869e-cde9-4998-ba25-a2e815885778/Screenshot_1.png)
+                
+        - **Pre-rendering Methods: (Two Form Of Pre-rendering) (Static Generation - Server Side Rendering)**
+            - İkisi arasındaki fark bir HTML ‘in ne zaman oluşturulduğu ile alakalır.
+            - ***Statik Generation Pre-rendering:*** HTML build time ‘da oluşturulu. Her user requestinde korunur ve  tekrar tekrar oluşturulmaz. Bu yüzden Server Side Rendering ‘e göre daha hızlıdır.
+            
+            ![Screenshot_2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a9cc99c-96ef-4434-9405-4386e9492faf/Screenshot_2.png)
+            
+            - Build time —> Package.json dosyamızda scriptlerimiz vardı bunlarda biri de next build ‘i
+            
+            ![Screenshot_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/15c2b64a-c40c-4011-9e50-fc7b34015698/Screenshot_1.png)
+            
+            - yarn build dediğimizde buradaki “next build” çağrılır.
+            - Burası Statik Generation ‘ının gerçekleştiği kısımdır.
+            - ***Server Side Rendering:*** Her user requestinde (each request) yeni bir HTML oluşturur.
+            
+            ![Screenshot_3.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2421b597-115a-42d5-8300-138be23ddb31/Screenshot_3.png)
+            
+            > **NOT**: Development modunda (npm run dev / yarn dev) her sayfa her request ‘de pre-render edilir. Bu durum Static Generation ile oluşturulan sayfalar için de geçerlidir. Sadece Development ortamında geçerli bir olaydır.
+            > 
+            
+            > Production modunda Static Generation sadece build time ‘da yapılır. Development modunda her requestde re-render edilir.
+            > 
+    
+    - **Per-Page Basis (Sayfa Bazlı)**
+        - Nextjs ‘de sadece Static Generation (SSG), Server Side Renderin (SSR), Client Side Rendering (CSR) değil bunları sayfa bazlı da kullanabiliriz.
+        - Nextjs Pre-rendering formları arasında her sayfa için bir seçim yapmamıza izin verir.
+        - Bu şekilde hybrid nextjs uygulamaları yaratılabilir.
+        
+        ![Screenshot_2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3a57466c-37bf-44a1-b9c0-50c54cc0df92/Screenshot_2.png)
+        
+    - **Static Generation ve Server-Side Rendering seçim yapmak (When to use)**
+        - Nextjs ‘nin önerisi olabildiğince Static Generation kullanmak. Çünkü build time ‘de pre-render yapıp sonrasındaki her request ‘de bunu kullanmak daha hızlıdır.
+            - ***Örnek Sayfalar:***
+                - Marketing pages
+                - Blog posts
+                - E-commerce product listings
+                - Help and documentation
+        - Farklı user request ‘lerinde tekrar tekrar oluştrulmasına gerek olmayan, hali hazırda bir tane olan sayflar için Static Generation.
+        - Sıkça güncellenen bir veriye sahipsek, user ‘ın url ‘e gireceği parametreler requestimizi etkiliyor ise ( Veriyi farklı parametrelere göre tekrardan yakalamamız gerekiyorsa ) o zaman her user requestinde re-render işlemi yapan Server-Side Rendering ‘i kullanmamız gerekir.
+        - Statik Generation ‘a göre daha yavaş olacak ama her zaman güncel (up to date) olacaktır.
