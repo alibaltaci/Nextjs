@@ -255,3 +255,8 @@
     - Development ortamında ise her request için yeniden oluşturulur.
     - getStaticProps sadece içindeki kodun Server-Side ‘da çalıştığını garanti eder. Clint-Side ‘da çalışmayacağından emin olabiliriz.
     - İçindeki kodlar JS Bundle ‘a da dahil edilmez. Yani hiçbir şekilde tarayıcıya gitmediğinden emin olabiliriz.
+
+- **getServerSideProps**:
+    - Her requestde yeniden oluşturulur.
+    - context parametresi alır ve user requestinde yeniden çağrılır.
+    - Context sayesinde url ‘deki parametrelere erişebiliriz.
