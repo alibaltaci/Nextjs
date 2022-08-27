@@ -200,7 +200,7 @@ export default Layout;
     - create-react-app ‘de pre-render işlemi gerçekleşmediği için “You need to enable JavaScript to run this app. “ yazısını görürüz.
     - Statik olarak yakalanmış bir HTML sayfası görmüyoruz.
     
-    ![Screenshot_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8810869e-cde9-4998-ba25-a2e815885778/Screenshot_1.png)
+    ![1](https://user-images.githubusercontent.com/71599944/187032459-2f956b8b-01c1-47a6-acfb-5f0f3e48241b.png)  
     
 
 ### **Pre-rendering Methods: (Two Form Of Pre-rendering) (Static Generation - Server Side Rendering)**
@@ -208,17 +208,18 @@ export default Layout;
 - İkisi arasındaki fark bir HTML ‘in ne zaman oluşturulduğu ile alakalır.
 - ***Statik Generation Pre-rendering:*** HTML build time ‘da oluşturulu. Her user requestinde korunur ve  tekrar tekrar oluşturulmaz. Bu yüzden Server Side Rendering ‘e göre daha hızlıdır.
 
-![Screenshot_2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a9cc99c-96ef-4434-9405-4386e9492faf/Screenshot_2.png)
+![Screenshot_2](https://user-images.githubusercontent.com/71599944/187032512-ae5a1816-77a5-48b8-b20d-da850141b684.png)
+
 
 - Build time —> Package.json dosyamızda scriptlerimiz vardı bunlarda biri de next build ‘i
 
-![Screenshot_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/15c2b64a-c40c-4011-9e50-fc7b34015698/Screenshot_1.png)
+![Screenshot_1](https://user-images.githubusercontent.com/71599944/187032516-2047d9e6-fbc9-466d-8dfe-4a0e732b223c.png)
 
 - yarn build dediğimizde buradaki “next build” çağrılır.
 - Burası Statik Generation ‘ının gerçekleştiği kısımdır.
 - ***Server Side Rendering:*** Her user requestinde (each request) yeni bir HTML oluşturur.
 
-![Screenshot_3.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2421b597-115a-42d5-8300-138be23ddb31/Screenshot_3.png)
+![Screenshot_3](https://user-images.githubusercontent.com/71599944/187032528-0f6648f6-8d14-4da7-b64a-7cbea78b771b.png)
 
 > **NOT**: Development modunda (npm run dev / yarn dev) her sayfa her request ‘de pre-render edilir. Bu durum Static Generation ile oluşturulan sayfalar için de geçerlidir. Sadece Development ortamında geçerli bir olaydır.
 > 
@@ -232,7 +233,7 @@ export default Layout;
 - Nextjs Pre-rendering formları arasında her sayfa için bir seçim yapmamıza izin verir.
 - Bu şekilde hybrid nextjs uygulamaları yaratılabilir.
 
-![Screenshot_2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3a57466c-37bf-44a1-b9c0-50c54cc0df92/Screenshot_2.png)
+![Screenshot_2](https://user-images.githubusercontent.com/71599944/187032577-b028af98-227d-458c-8a41-32d210be8b68.png)
 
 ### **Static Generation ve Server-Side Rendering seçim yapmak (When to use)**
 
@@ -260,7 +261,7 @@ export default Layout;
 
 ## **getServerSideProps**:
 
-![Screenshot_4.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d6928cdf-9db6-4984-a32d-72e5b7825e76/Screenshot_4.png)
+![Screenshot_4](https://user-images.githubusercontent.com/71599944/187032583-78a34622-d1fd-4a6f-b465-262b01e7dc62.png)
 
 - Her requestde sayfalar dinamik olarak yeniden oluşturulur.
 - context parametresi alır ve user requestinde yeniden çağrılır.
@@ -268,7 +269,7 @@ export default Layout;
 
 ## **getStaticPaths:**
 
-![Screenshot_5.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a3c54b1e-d555-4cd2-a730-fc530934aae8/Screenshot_5.png)
+![Screenshot_5](https://user-images.githubusercontent.com/71599944/187032588-2ea534b9-e5c0-4791-b5ef-1bcf587d0fc5.png)
 
 - getStaticProps ile kombineli olarak kullanılır.
 - Sayfalarımızı build time ‘da static olarak oluşturabiliriz.
