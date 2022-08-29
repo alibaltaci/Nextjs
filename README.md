@@ -200,7 +200,7 @@ export default Layout;
     - create-react-app ‘de pre-render işlemi gerçekleşmediği için “You need to enable JavaScript to run this app. “ yazısını görürüz.
     - Statik olarak yakalanmış bir HTML sayfası görmüyoruz.
     
-    ![Screenshot_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8810869e-cde9-4998-ba25-a2e815885778/Screenshot_1.png)
+    ![](alibaltaci/Next.js-CSR-SSR-SSG)
     
 
 ### **Pre-rendering Methods: (Two Form Of Pre-rendering) (Static Generation - Server Side Rendering)**
@@ -208,7 +208,7 @@ export default Layout;
 - İkisi arasındaki fark bir HTML ‘in ne zaman oluşturulduğu ile alakalır.
 - ***Statik Generation Pre-rendering:*** HTML build time ‘da oluşturulu. Her user requestinde korunur ve  tekrar tekrar oluşturulmaz. Bu yüzden Server Side Rendering ‘e göre daha hızlıdır.
 
-![Screenshot_2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a9cc99c-96ef-4434-9405-4386e9492faf/Screenshot_2.png)
+![](1.png)
 
 - Build time —> Package.json dosyamızda scriptlerimiz vardı bunlarda biri de next build ‘i
 
