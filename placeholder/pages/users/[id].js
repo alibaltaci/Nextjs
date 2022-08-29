@@ -43,7 +43,7 @@ export async function getStaticProps( {params} ){
 //     }
 // }
 
-export default function Details( {user} ){
+export default function Details( { user } ){
 
     // CSR
 
@@ -64,7 +64,7 @@ export default function Details( {user} ){
     // if(!user){
     //     return null
     // }
-
+    
     return(
         <div>
 

@@ -27,18 +27,18 @@ export async function getStaticProps(){
 //   }
 // }
 
-export default function Home( {users} ) {
+export default function Home( { users } ) {
 
   // CSR (Client Side Rendering)
 
   // const [users, setUsers] = useState([]);
 
   // useEffect( () => {
-  //   async function getPersons(){
+  //   async function getUsers(){
   //     const res = await fetch("https://jsonplaceholder.typicode.com/users");
   //     setUsers( await res.json() );
   //   }
-  //   getPersons();
+  //   getUsers();
   // }, [])
 
 
