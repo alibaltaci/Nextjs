@@ -4,8 +4,8 @@
 ## **CSR**
 
 - İlk yükleme uzun bütün yük browser tarafında.
-- JS kocunun compile edilmesi beklenir.
-- Kullanıcının maklinesi ya da interneti kötü ise kötü bir deneyim yaşatır.
+- JS kodunun compile edilmesi beklenir.
+- Kullanıcının makinesi ya da interneti kötü ise kötü bir deneyim yaşatır.
 - Browserların eski olması sıkıntı çıkartabilir.
 - İlk yüklemeden sonraki işlemler oldukça hızlıdır. (Sadece gerekli olan kısımlar yenilendiği için.)
 
@@ -13,7 +13,7 @@
 
 - Render edilmeye hazır HTML sayfası gönderir.
 - Daha ikinci aşamadan itibaren kullanıcının görüntüleye bileceği ama interaktif olmayan bir ekran gelir. (Statik olrak görünür ama etkileşime geçmek için hazır değil)
-- JS kodu indirler ve React execute edildikten sonra sayfa tamamen hazır hale gelir. (Etkileşim Hazır)
+- JS kodu indirilir ve React execute edildikten sonra sayfa tamamen hazır hale gelir. (Etkileşime Hazır)
 - Tüm yük server üzerinde.
 - Sayfanın ilk yüklenme hızı CSR göre daha hızlıdır.
 - Sayfa yükleme işlemleri her sefenrinde baştan 4 adım uygulanarak yapıldığı için bu aşamalar bazında CSR göre daha yavaştır.
@@ -25,7 +25,7 @@
 - static file serving (Sunum)  `./public/`     `/`  url ine maplenir.
     - image ve asset dosyalarımızı public klasörümüzün altına yüklüyoruz.
     - public klasörü altına attığımız her svg , icon dosyaları `<Head>` kısmında `/` ile erişilebilir hale gelir. ( `href = “/favicon.ico”`)
-    - Buraya önemsiz dosyalar konulmalır. Buradaki her şey Clint Side tarafında erişilebilir durumdadır. `(localhost:3000/favicon.ico)`
+    - Buraya önemsiz dosyalar konulmaldır. Buradaki her şey Clint Side tarafında erişilebilir durumdadır. `(localhost:3000/favicon.ico)`
 
 ## **NOT FOUND**
 
@@ -37,11 +37,11 @@
 - Bir nextjs feature ıdır.
 - Anlık feedback almamızı sağlar. Anlık değişiklikleri componentin state ini kaybetmeden bu sayede alırız.
 - Default olarak bütün nextjs uygulamalarında aktiftir.
-- Sadece değişiklik yapılan componenti re-render eder. Bunu yaparken de componentirn state ini preserve (korumak) edecek.
+- Sadece değişiklik yapılan componenti re-render eder. Bunu yaparken de componentin state 'ini preserve (korumak) edecek.
 - Değişiklik yaptığımız dosya bir react componenti export etmiyorsa, hem bu dosya yeniden çalıştırılır hem de bu dosyayı import eden dosyalar yeniden çalıştırılır.
-- React tree de olmayan dosyalar tarafına import edilmiş bir dosyayı editlersek fest refresh komple (full reload)  bir reload yapar.
+- React tree 'de olmayan dosyalar tarafına import edilmiş bir dosyayı editlersek fest refresh komple (full reload)  bir reload yapar.
 - React componenti export eden bir dosyamız olsun, bir tane de react componenti olmayan bir value yu da export eden bir dosyamız olsun. Bu durumda full reload gerçekleşir.
-- Bu durumda fast refresh i yeniden aktif hale getirebilmek için bunu başka bir dosyaya alıp o şekilde import etmek daha mantıklı olacaktır.
+- Bu durumda fast refresh 'i yeniden aktif hale getirebilmek için bunu başka bir dosyaya alıp o şekilde import etmek daha mantıklı olacaktır.
 
 ### **Runtime Error**
 
@@ -51,7 +51,7 @@
 
 - Fast refresh için bazı limitler vardır.
 - Local state ler class componentleri için korunmuyor. (Sadece function komponentleri ve Hook lar içi react component ın state korunur)
-- Dosya içinde high-order component (HOC) (WrappedComponent) export edersek ve dönen component bir class component i ise state resetlenir ve korunmaz.
+- Dosya içinde high-order component (HOC) (WrappedComponent) export edersek ve dönen component bir class component 'i ise state resetlenir ve korunmaz.
 
 ### **Tips**
 
@@ -76,7 +76,7 @@
 - ***CSS in JS***
     - Birden fazla className atanabilir.
     
-    ```jsx
+    ```
     <h1 className="greenColor bigText" >About</h1>
     
     <style jsx>{`
@@ -121,7 +121,7 @@ export default Layout;
 
 ## **Routing (Nav - Link)**
 
-- Link: Client Side Routing i sağlayan componentler dir.
+- Link: Client Side Routing 'i sağlayan componentler dir.
 - Bir sayfada olan hata diğer sayfaların çalışmasını engellemez.
 
 ```jsx
@@ -186,7 +186,7 @@ export default Layout;
 - Pre-rendering performanslı SEO işlemleri için olumlu bir özelliktir.
 - Her oluşturulan HTML minimal JS kodu (fully functional) ile oluşturulur. Bu ***Code spliting*** açısından önemlidir.
 - Bir sayfa browser tarafından yüklendiği zaman JS kodu çalışır ve onu interaktif hale (Kullanıcının etkileşim kurabileceği) dönüştürür.
-- Bu process e ***hydration*** ismi verilir.
+- Bu process 'e ***hydration*** ismi verilir.
 
 ### **Pre-rendiring in olup olmadığını nasıl kontrol ederiz? (Check That Pre-renderin Happening)**
 
@@ -201,7 +201,6 @@ export default Layout;
     - Statik olarak yakalanmış bir HTML sayfası görmüyoruz.
     
     ![1](https://user-images.githubusercontent.com/71599944/187032459-2f956b8b-01c1-47a6-acfb-5f0f3e48241b.png)  
->>>>>>> e095af000e071ee6321358e61d32ccfb347810ff
     
 
 ### **Pre-rendering Methods: (Two Form Of Pre-rendering) (Static Generation - Server Side Rendering)**
@@ -210,8 +209,6 @@ export default Layout;
 - ***Statik Generation Pre-rendering:*** HTML build time ‘da oluşturulu. Her user requestinde korunur ve  tekrar tekrar oluşturulmaz. Bu yüzden Server Side Rendering ‘e göre daha hızlıdır.
 
 ![Screenshot_2](https://user-images.githubusercontent.com/71599944/187032512-ae5a1816-77a5-48b8-b20d-da850141b684.png)
-
->>>>>>> e095af000e071ee6321358e61d32ccfb347810ff
 
 - Build time —> Package.json dosyamızda scriptlerimiz vardı bunlarda biri de next build ‘i
 
