@@ -42,7 +42,6 @@ function AllMeetupsPage() {
     <section>
       <h1>All Meetups</h1>
 
-      {/* <MeetupList meetups={DUMMY_DATA} /> */}
       <MeetupList meetups={loadedMeetup} />
 
     </section>
