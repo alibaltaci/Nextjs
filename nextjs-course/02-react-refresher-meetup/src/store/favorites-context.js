@@ -1,45 +1,48 @@
 import { createContext, useState } from "react";
 
-const FavoriteContext = createContext({
+const FavoritesContext = createContext({
     // initial values
     favorites: [],
     totalFavorites: 0,
+    AddFavorite: ( favoriteMeetup ) => {},
+    removeFavorite: ( meetupId ) => {},
+    itemIsFavorite: ( meetupId ) => {},
 });
 
-function FavoritesContextProvider( props ){
+export function FavoritesContextProvider( props ){
 
     const [ userFavorites, setUserFavorites ] = useState( [] );
 
-    const context = {
-        favorites: userFavorites,
-        totalFavorites: userFavorites.length,
-    }
-
     function addFavoriteHandler( favoriteMeetup ){
         setUserFavorites( (prevUserFavorites) => {
-            return(
-                prevUserFavorites.concat( favoriteMeetup )
-            );
+            return prevUserFavorites.concat( favoriteMeetup );
         });
     }
 
     function removeFavoriteHandler( meetupId ){
         setUserFavorites( (prevUserFavorites) => {
-            return(
-                prevUserFavorites.filter( meetup => meetup.id !== meetupId )
-            );
+            return prevUserFavorites.filter( meetup => meetup.id !== meetupId );
         } );
     }
 
     function itemIsFavoriteHandler( meetupId ){
-        return(
-            userFavorites.some( meetup => meetup.id === meetupId )
-        );
+        return userFavorites.some( meetup => meetup.id === meetupId );
+    }
+
+    const context = {
+        favorites: userFavorites,
+        totalFavorites: userFavorites.length,
+        AddFavorite: addFavoriteHandler,
+        removeFavorite: removeFavoriteHandler,
+        itemIsFavorite: itemIsFavoriteHandler,
     }
 
     return(
-        <FavoriteContext.Provider value={ context } >
+        <FavoritesContext.Provider value={ context } >
             {props.chilren}
-        </FavoriteContext.Provider>
+        </FavoritesContext.Provider>
     )
 }
+
+export default FavoritesContext;
+
