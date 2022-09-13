@@ -39,7 +39,7 @@ export function FavoritesContextProvider( props ){
 
     return(
         <FavoritesContext.Provider value={ context } >
-            {props.chilren}
+            {props.children}
         </FavoritesContext.Provider>
     )
 }
