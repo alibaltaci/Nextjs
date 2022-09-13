@@ -33,14 +33,31 @@
 .actions button{
     font: inherit;
     cursor: pointer;
-    color: #77002e;
-    border: 1px solid #77002e;
     background-color: transparent;
     padding: 0.5rem 1.5rem;
     border-radius: 4px;
+    margin-right: 1rem;
 }
 
-.actions button:hover,
-.actions button:active{
-    background-color: #ffe2ed;
+.primaryButton{
+    color: #77002e;
+    border: 1px solid #77002e;
 }
+
+.primaryButton:hover,
+.primaryButton:active{
+    background-color: 
+    #ffe2ed;
+}
+
+.dangerButton{
+    color: #c70808;
+    border: 1px solid #c70808;
+}
+
+.dangerButton:hover,
+.dangerButton:active{
+    background-color: #c7080828;
+}
+
+

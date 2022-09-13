@@ -15,7 +15,28 @@ function MeetupItem( props ) {
 
         if( itemIsFavorites ){
             favoritesCtx.removeFavorite( props.id );
+
+            console.log( props.id );
+
+            fetch(
+                `https://react-meetup-464df-default-rtdb.firebaseio.com/meetup-keys.json`,
+                {
+                    method: "DELETE",
+                })
         }else{
+
+            fetch(
+                "https://react-meetup-464df-default-rtdb.firebaseio.com/meetup-keys.json",
+                {
+                    method: "POST",
+                    body: JSON.stringify( { 
+                        key: props.id 
+                    } ),
+                    headers:{ 
+                        "Content-Type": "aplication/json"
+                    }
+                })
+
             favoritesCtx.AddFavorite( {
                 id: props.id,
                 title: props.title,
@@ -25,6 +46,21 @@ function MeetupItem( props ) {
             } )
         }
     }
+
+    function deleteMeetupFromFirebase(){
+
+        console.log( props.id );
+
+        fetch(
+            `https://react-meetup-464df-default-rtdb.firebaseio.com/meetups/${props.id}.json`,
+            {
+                method: "DELETE",
+            }
+        ).then( () => {
+            window.location.reload(false);
+        })
+    }
+
 
   return (
     <li className={classes.item}>
@@ -40,7 +76,8 @@ function MeetupItem( props ) {
                 <p>{ props.description }</p>
             </div>
             <div className={classes.actions}>
-                <button onClick={ toggleFavoriteStatusHandler } >{ itemIsFavorites ? "Remove From Favorites" : "To Favorites" }</button>
+                <button className={ classes.primaryButton } onClick={ toggleFavoriteStatusHandler } >{ itemIsFavorites ? "Remove From Favorites" : "To Favorites" }</button>
+                <button className={ classes.dangerButton} onClick={ deleteMeetupFromFirebase } >Delete</button>
             </div>
 
         </Card>
