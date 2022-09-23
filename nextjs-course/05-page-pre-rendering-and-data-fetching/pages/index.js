@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs/promises";
 
-export async function getStaticProps(){
+export async function getStaticProps( context ){
 
   const filePath = path.join( process.cwd(), "data", "dummy-backend.json"); // /data/dummy-data.json
 
@@ -9,11 +9,25 @@ export async function getStaticProps(){
 
   const data = JSON.parse(joinData);
 
+  if( !data ){
+    return({
+      redirect:{
+        destination: "/"
+      }
+    })
+  }
+
+  if( data.products.length === 0 ){
+    return({
+      notFound: true
+    })
+  }
+
   return({
     props:{
       products: data.products,
     },
-    revalidate: 10
+    revalidate: 1,
 })
 }
 

@@ -10,7 +10,19 @@
 ●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps)
 
 
-# Revalidate
+# getStaticProps keys
+
+## Revalidate
 
 * dev oratamında geçersizdir.
-* producition ortamında önemlidir.
+* producition ortamında önemlidir. npm run build - npm start
+
+## notFound
+
+* true - false değerleri alır.
+* true ayarlanırsa 404 sayfası döner. (npm run build / start yapmak lazım)
+
+## redirect 
+
+* yönlendirmek için 
+
