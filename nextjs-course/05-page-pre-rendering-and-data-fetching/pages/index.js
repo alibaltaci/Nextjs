@@ -1,5 +1,6 @@
 import path from "path";
 import fs from "fs/promises";
+import Link from "next/link";
 
 export async function getStaticProps( context ){
 
@@ -41,7 +42,9 @@ export default function HomePage( { products } ) {
         {
           products.map( ( product ) => (
             <li key={ product.id }>
-              { product.title }
+              <Link href={`/${product.id}`} >
+                { product.title }
+              </Link>
             </li>
            ))
         }
