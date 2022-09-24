@@ -7,11 +7,11 @@ function ProductDetailPage( { loadedProduct } ) {
     // const { loadedProduct } = props;
 
     // for fallback: true
-    // if( !loadedProduct ){
-    //     return(
-    //         <p>Loading...</p>
-    //     )
-    // }
+    if( !loadedProduct ){
+        return(
+            <p>Loading...</p>
+        )
+    }
 
   return (
     <Fragment>
@@ -44,6 +44,10 @@ export async function getStaticProps( context ){
 
     const product = data.products.find( product =>  product.id === productId );
 
+    if( !product ){
+        return{ notFound: true }
+    }
+
     return {
         props: {
             loadedProduct: product
@@ -72,7 +76,7 @@ export async function getStaticPaths(){
         //     // { params: { pid: "p3" } },
         // ],
 
-        fallback: false
+        fallback: true
     }
 }
 
