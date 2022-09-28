@@ -9,7 +9,7 @@
 ○  (Static)  automatically rendered as static HTML (uses no initial props)
 ●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps)
 
-
+# Static Generation 
 # getStaticProps keys
 
 ## Revalidate
@@ -41,3 +41,9 @@
 * Bu sorunu çözebilmek için bir loading fonksiyonu yazılabilir.
 
  * "blocking" --> Sayfanın sunucuda tamamen oluşturulması için Nextjs bekleyecek. Biraz daha uzun süren bir yaöntemdir. Verilerin alınmasının daha uzun sürdüğü durumlarda kullanıcılara eksik sayfa göstermememk için kullanılabilcek bir yöntemdir.
+
+
+# Server Side Rendering (SSR)
+
+# getServerSideProps
+
