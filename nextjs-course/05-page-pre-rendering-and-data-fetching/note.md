@@ -47,3 +47,7 @@
 
 # getServerSideProps
 
+## not: 
+
+Aynı dizinde birden fazla dinamik yola sahip "[]" dosya olursa çakışma yalanır.
+Bu yüzden dinamik dosyaların gerekli olanlar alt klasörlere taşınabilir.
