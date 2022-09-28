@@ -8,8 +8,10 @@ export default UserProfilePage;
 
 export async function getServerSideProps( context ){
 
-    const { params } = context;
-    
+    const { params, req, res } = context;
+
+    console.log( "Serves Side Rendering" );
+
     return{
         props: {
             username: "Ali"

@@ -10,6 +10,8 @@ export async function getStaticProps( context ){
 
   const data = JSON.parse(joinData);
 
+  console.log( "Static Generation" );
+
   if( !data ){
     return({
       redirect:{
@@ -34,7 +36,7 @@ export async function getStaticProps( context ){
 
 export default function HomePage( { products } ) {
 
-  console.log( products );
+  // console.log( products );
 
   return (
     <div>
