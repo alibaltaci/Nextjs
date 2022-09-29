@@ -89,3 +89,11 @@ Bu yüzden dinamik dosyaların gerekli olanlar alt klasörlere taşınabilir.
 * useSWR hook 'u en az bir argüman ister. Bu genelde fetch yapılacak URL 'dir.
 
 * İkinci argüman olarak fether function ekelenebilir. Defaul değeri feth API 'dir.
+
+# Clien Side ve Pre-Rendering birlikte kullanım.
+
+## useSWR & getStaticProps
+
+* useSWR ile çekilen verilerle sayfa oluşturulur ve database 'imizdeki anlık eklenen veriler browser 'da gösterilir. Fakat bu veriler sayfa ilk oluşturulurken ( getStaticPops ) olmadığı için sayfa incelendiğinde orada gözükmezler.
+
+* npm run build --> npm run start --> sayfa kaynağına bak ( bu işlem sırasında database 'de olan veriler orad. Sonradan database 'e eklenen veriler ekranda görünür fakat kaynakta görünmez. )

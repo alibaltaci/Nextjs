@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 
-function LastSalesPage(){
+function LastSalesPage( props ){
+
+    // Client Side Rendering
 
     // const [ sales, setSales ] = useState();
 
@@ -51,13 +53,12 @@ function LastSalesPage(){
 
     // useSWR
 
-    const [ sales, setSales ] = useState();
+    // const [ sales, setSales ] = useState();
+    const [ sales, setSales ] = useState( props.sales ); //CSR & SSR
 
     const fetcher = (url) => fetch(url).then((res) => res.json());
 
     const { data, error } = useSWR( "https://client-side-data-default-rtdb.firebaseio.com/sales.json", fetcher );
-
-    console.log( data );
 
     useEffect( () => {
 
@@ -82,7 +83,7 @@ function LastSalesPage(){
         )
     }
 
-    if( !data || !sales){
+    if( !data && !sales){
         return(
             <p>Loading...</p>
         )
@@ -102,4 +103,36 @@ function LastSalesPage(){
 
 }
 
+// CSR & SSR
+
+export async function getStaticProps( ){
+    // return fetch( "https://client-side-data-default-rtdb.firebaseio.com/sales.json" )
+    // .then( res => res.json)
+    // .then( data => {
+
+        const res = await fetch( "https://client-side-data-default-rtdb.firebaseio.com/sales.json" )
+
+        const data = await res.json();
+        
+        const transformedSales = [];
+
+        for ( const key in data ){
+            transformedSales.push({
+                id: key,
+                username: data[key].username,
+                volume: data[key].volume,
+            });
+        }
+
+        return({
+            props: {
+                sales: transformedSales
+            },
+    
+            // revalidate: 10
+        })
+    // })
+}
+
 export default LastSalesPage;
+
