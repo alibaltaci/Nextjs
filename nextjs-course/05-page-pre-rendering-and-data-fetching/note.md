@@ -51,3 +51,20 @@
 
 Aynı dizinde birden fazla dinamik yola sahip "[]" dosya olursa çakışma yalanır.
 Bu yüzden dinamik dosyaların gerekli olanlar alt klasörlere taşınabilir.
+
+
+# Client Side Rendering ( SSR )
+
+## Some Data doesn't need to be pre-rendered 
+
+* Data changing  with high frequency ( e.g. stock data )
+
+* Highly user-specific data ( e.g. lost orders in an online shop )
+
+    *  Bu sayfaları önceden işlemeye gerek yok. Çünkü browserlar zaten bu verileri göremeyecek ve bunları pre-render etmek anlamsız olur.
+
+* partial data ( e.g. data that's only used on a part of an page )
+
+* Pre-fetching the data for page generation might not work or be required 
+
+    * Traditional client-side data fetching ( e.g. useEffect() with fetch() is fine )     
