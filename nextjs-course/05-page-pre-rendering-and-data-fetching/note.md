@@ -97,3 +97,9 @@ Bu yüzden dinamik dosyaların gerekli olanlar alt klasörlere taşınabilir.
 * useSWR ile çekilen verilerle sayfa oluşturulur ve database 'imizdeki anlık eklenen veriler browser 'da gösterilir. Fakat bu veriler sayfa ilk oluşturulurken ( getStaticPops ) olmadığı için sayfa incelendiğinde orada gözükmezler.
 
 * npm run build --> npm run start --> sayfa kaynağına bak ( bu işlem sırasında database 'de olan veriler orad. Sonradan database 'e eklenen veriler ekranda görünür fakat kaynakta görünmez. )
+
+# Summary
+
+* CSR işlemlerinde fetch ile verileri çekersek yeni veriler eklendiğinde, güncel olarak bunları göremeyebiliriz.
+* useSWR ile bu verileri görebiliriz. ( güncel verileri görmek için iyi )
+* getStaticProps & useSWR kullanılırsa mevcut veriler ile sayfa oluşturulur ( page pre-rendering ) ve yeni eklenen veriler ile sayfa browser üzerinde güncellenir. Fakat sayfa kaynağı incelendiğinde, sadece başlangıç verileri görünür.

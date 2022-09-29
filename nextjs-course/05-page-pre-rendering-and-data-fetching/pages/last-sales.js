@@ -17,7 +17,7 @@ function LastSalesPage( props ){
     //     .then( res => res.json() )
     //     .then( data => {
 
-    //         console.log( data );
+    //         // console.log( data );
 
     //         const trasformedSales = [];
 
@@ -32,7 +32,7 @@ function LastSalesPage( props ){
     //         setSales( trasformedSales );
     //         setLoading( false );
 
-    //         console.log( trasformedSales );
+    //         // console.log( trasformedSales );
 
     //     });
 
@@ -51,7 +51,7 @@ function LastSalesPage( props ){
     //     )
     // }
 
-    // useSWR
+    // CSR with useSWR
 
     // const [ sales, setSales ] = useState();
     const [ sales, setSales ] = useState( props.sales ); //CSR & SSR
@@ -83,7 +83,7 @@ function LastSalesPage( props ){
         )
     }
 
-    if( !data && !sales){
+    if( !data || !sales){
         return(
             <p>Loading...</p>
         )
@@ -113,7 +113,7 @@ export async function getStaticProps( ){
         const res = await fetch( "https://client-side-data-default-rtdb.firebaseio.com/sales.json" )
 
         const data = await res.json();
-        
+
         const transformedSales = [];
 
         for ( const key in data ){
