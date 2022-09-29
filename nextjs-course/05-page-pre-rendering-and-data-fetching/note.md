@@ -68,3 +68,24 @@ Bu yüzden dinamik dosyaların gerekli olanlar alt klasörlere taşınabilir.
 * Pre-fetching the data for page generation might not work or be required 
 
     * Traditional client-side data fetching ( e.g. useEffect() with fetch() is fine )     
+
+# useSWR ( stale-while-revalidate )
+
+## Kurulum
+* dev modundan çık
+
+```
+ npm install swr
+
+ import useSWR from "swr"
+```
+
+## SWR özellikler
+
+* Nextjs tarafından sunulur fakat nextjs olmayan projelerde de kullanılabilir.
+
+* HTTP isteği gönderir önbelleğe alma ve otomatik yeniden doğrulama ( güncel veriler için ), hata durumunda yeniden deneme gibi yerleşik özelliklere ( built in features ) sahiptir.  
+
+* useSWR hook 'u en az bir argüman ister. Bu genelde fetch yapılacak URL 'dir.
+
+* İkinci argüman olarak fether function ekelenebilir. Defaul değeri feth API 'dir.
