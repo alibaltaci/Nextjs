@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import Button from "../ui/Button";
+import Dropdown from "../ui/Dropdown";
 import classes from "./EventsSearch.module.css";
 
 
@@ -19,7 +20,7 @@ function EventsSerch( props ) {
 
   return (
     <form className={ classes.form } >
-        <div className={ classes.controls } >
+        <div className={ classes.controls } >    
             <div className={ classes.control } >
                 <label htmlFor="year" >Year</label>
                 <select id="year" ref={ yearInputRef } >
