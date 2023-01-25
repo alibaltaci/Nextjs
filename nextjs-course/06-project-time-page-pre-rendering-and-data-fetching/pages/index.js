@@ -1,4 +1,5 @@
 import EventList from "../components/events/EventList";
+import { getFeaturedEvents } from "../helpers/api-util";
 
 // from local
 // import { getFeaturedEvents } from "../dumy-data"
