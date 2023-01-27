@@ -1,7 +1,7 @@
 // import { useRouter } from "next/router";
 
 // import { getEventById } from "../../dumy-data";
-import { getEventById, getAllEvents } from "../../helpers/api-util";
+import { getEventById, getAllEvents, getFeaturedEvents } from "../../helpers/api-util";
 
 import { Fragment } from "react";
 import EventSummary from "../../components/event-detail/EventSummary";
@@ -20,8 +20,12 @@ function EventDetailPage( props ) {
 
   if( !event ){
     return(
-      <ErrorAlert message="No Event Found!" />
+      // <ErrorAlert message="No Event Found!" />
       // <p>No Event Found!</p>
+
+      <div className="center">
+        <p>Loading...</p>
+      </div>
     )
   }
 
@@ -47,20 +51,27 @@ export async function getStaticProps( context ){
   return {
     props:{
       selectedEvent: event
-    }
+    },
+    // bilgiler önem arzettiği için daha kısa süreli yanileme
+    revalidate: 30 
   }
 }
 
 export async function getStaticPaths(){
 
-  const events = await getAllEvents();
+  // const events = await getAllEvents(); // tüm sayfaları önceden oluşturuyoruz.
+
+  const events = await getFeaturedEvents(); // sadece seçili sayfaları önceden oluşturuyoruz.
 
   const paths = events.map( event => ({ params: { eventId: event.id } }) ); // [ id1, id2, id3, ... ]
 
   
   return{
     paths: paths,
-    fallback: false
+    // fallback: false // oluşturulabilecek tüm sayfaların oluşturulduğune söylüyoruz - getAllEvents()
+    // fallback: true // tüm sayfaların oluşturulmadığını daha fazla sayfamız olduğunu söylüyoruz. Bunları dinamik olarak oluşturmaya çalışacak. Fakat var olmayan bir key'de sıkıntı çıkaracaktır.
+    fallback: "blocking"
+
   }
 }
 
