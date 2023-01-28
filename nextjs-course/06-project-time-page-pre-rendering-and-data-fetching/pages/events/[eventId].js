@@ -44,6 +44,7 @@ function EventDetailPage( props ) {
 }
 
 export async function getStaticProps( context ){
+
   const eventId = context.params.eventId;
 
   const event = await getEventById( eventId )
@@ -65,7 +66,6 @@ export async function getStaticPaths(){
 
   const paths = events.map( event => ({ params: { eventId: event.id } }) ); // [ id1, id2, id3, ... ]
 
-  
   return{
     paths: paths,
     // fallback: false // oluşturulabilecek tüm sayfaların oluşturulduğune söylüyoruz - getAllEvents()
