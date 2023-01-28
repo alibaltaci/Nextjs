@@ -5,7 +5,7 @@ import ResultsTitle from "../../components/events/ResultsTitle";
 import { getFilteredEvents } from "../../dumy-data";
 import ErrorAlert from "../../components/events/ErrorAlert";
 
-function FilteredEventsPage() {
+function FilteredEventsPage( props ) {
 
   const router = useRouter();
 
@@ -24,12 +24,15 @@ function FilteredEventsPage() {
   const numMonth = +filteredMonth;
 
   if( 
-    isNaN( numYear ) ||
-    isNaN( numMonth ) ||
-    numYear > 2030 ||
-    numYear < 2011 ||
-    numMonth > 12 ||
-    numMonth < 1
+    // isNaN( numYear ) ||
+    // isNaN( numMonth ) ||
+    // numYear > 2030 ||
+    // numYear < 2011 ||
+    // numMonth > 12 ||
+    // numMonth < 1
+
+    props.hasError
+    
    ){
     return(
       // <Fragment>
@@ -90,11 +93,14 @@ export async function getServerSideProps( context ){
      
       // <ErrorAlert message="Invalid filter. Please adjust your values!" />
 
-      notFound: true,
+      // notFound: true,
 
       // redirect:{
       //   destination: "/errorPage"   // Bir hata sayfası hazırlanıp buraya verilebilir.
       // }
+
+      props:{ hasError: true } // en iyi yol olabilir.
+
     }
    }
 
