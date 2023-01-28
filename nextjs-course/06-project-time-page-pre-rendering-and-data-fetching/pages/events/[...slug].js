@@ -1,5 +1,7 @@
-import { useRouter } from "next/router"
+import { useRouter, useEffect, useState } from "next/router"
 import { Fragment } from "react";
+// npm i swr
+import useSWR from "swr";
 import EventList from "../../components/events/EventList";
 import ResultsTitle from "../../components/events/ResultsTitle";
 // import { getFilteredEvents } from "../../dumy-data";
@@ -10,19 +12,21 @@ function FilteredEventsPage( props ) {
 
   const router = useRouter();
 
-  // const filteredData = router.query.slug;  // [year, month]
+  const filteredData = router.query.slug;  // [year, month]
 
-  // if( !filteredData ){
-  //   return(
-  //     <p className="center" >Loading...</p>
-  //   )
-  // }
+  const { data, error } = useSWR( "https://s6-events-data-default-rtdb.firebaseio.com/events.json" )
 
-  // const filteredYear = filteredData[0];
-  // const filteredMonth = filteredData[1];
+  if( !filteredData ){
+    return(
+      <p className="center" >Loading...</p>
+    )
+  }
 
-  // const numYear = +filteredYear;
-  // const numMonth = +filteredMonth;
+  const filteredYear = filteredData[0];
+  const filteredMonth = filteredData[1];
+
+  const numYear = +filteredYear;
+  const numMonth = +filteredMonth;
 
   if( 
     // isNaN( numYear ) ||
