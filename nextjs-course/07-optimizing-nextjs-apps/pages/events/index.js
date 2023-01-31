@@ -1,13 +1,10 @@
-// import { getAllEvents } from "../../dumy-data";
 import { getAllEvents } from "../../helpers/api-util";
 import EventList from "../../components/events/EventList";
 import EventsSearch from "../../components/events/EventsSearch";
 import { useRouter } from "next/router";
 
 function AllEventsPage( props ) {
-
-  // const events = getAllEvents();
-
+  
   const router = useRouter();
 
   const { events } = props;
