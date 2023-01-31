@@ -6,6 +6,7 @@ import EventList from "../../components/events/EventList";
 import ResultsTitle from "../../components/events/ResultsTitle";
 import { getFilteredEvents } from "../../helpers/api-util";
 import ErrorAlert from "../../components/events/ErrorAlert";
+import Head from "next/head";
 
 function FilteredEventsPage( props ) {
 
@@ -15,9 +16,13 @@ function FilteredEventsPage( props ) {
 
   const filteredData = router.query.slug;  // [year, month]
 
-  const { data, error } = useSWR( "https://s6-events-data-default-rtdb.firebaseio.com/events.json" );
+  // const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-  useEffect( () => {
+  const { data, error } = useSWR( "https://s6-events-data-default-rtdb.firebaseio.com/events.json");
+  
+  console.log( "data -->", data);
+ 
+ useEffect( () => {
 
     if(data){
     
@@ -29,19 +34,44 @@ function FilteredEventsPage( props ) {
           ...data[key],
         });
       }
-
       setLoadedEvents( events );
-   
     }
-
-
   }, [data] );
+
+  let pageHeadData = (
+    <Head>
+      <title>Filtered Events</title>
+      <meta
+        name="description"
+        content={ `A list of filtered events.` }
+      />
+    </Head>
+  )
+
+  if( !loadedEvents ){
+    return(
+      <Fragment>
+        { pageHeadData }
+        <p>Loading...</p>
+      </Fragment>
+    )
+  }
 
   const filteredYear = filteredData[0];
   const filteredMonth = filteredData[1];
 
   const numYear = +filteredYear;
   const numMonth = +filteredMonth;
+
+  pageHeadData = (
+    <Head>
+      <title>Filtered Events</title>
+      <meta
+        name="description"
+        content={ `All events for ${ numMonth }/${ numYear }.` }
+      />
+    </Head>
+  )
 
   if( 
     isNaN( numYear ) ||
@@ -53,10 +83,12 @@ function FilteredEventsPage( props ) {
     error  // useSWR
    ){
     return(
-      <ErrorAlert message="Invalid filter. Please adjust your values!" />
+      <Fragment>
+        { pageHeadData }
+        <ErrorAlert message="Invalid filter. Please adjust your values!" />
+      </Fragment>
     )
    }
-
   const filteredEvents = loadedEvents.filter((event) => {
     const eventDate = new Date(event.date);
     return eventDate.getFullYear() === numYear && eventDate.getMonth() === numMonth - 1;
@@ -64,7 +96,10 @@ function FilteredEventsPage( props ) {
 
    if( !filteredEvents || filteredEvents.length === 0 ){
     return(
-      <ErrorAlert message="No event found for the chosen filter!"/>
+      <Fragment>
+        { pageHeadData }
+        <ErrorAlert message="No event found for the chosen filter!"/>
+      </Fragment>
     )
    }
 
@@ -72,6 +107,7 @@ function FilteredEventsPage( props ) {
 
   return (
     <Fragment>
+      { pageHeadData }
       <ResultsTitle date={ date } />
       <EventList items={ filteredEvents } />
     </Fragment>
