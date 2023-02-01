@@ -12,14 +12,14 @@ export default function Home() {
     const enteredEmail = emailInputRef.current.value;
     const enteredFeedback = feedbackInputRef.current.value;
     
-    
+    console.log( enteredEmail, enteredFeedback );
 
   }
 
   return (
     <div>
       <h1>The Home Page</h1>
-      <form onClick={ submitFormHendler } >
+      <form onSubmit={ submitFormHendler } >
         <div>
           <label htmlFor="email" >Your Email Address</label><br />
           <input type="email" id="email" ref={ emailInputRef } />
