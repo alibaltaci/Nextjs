@@ -1,5 +1,5 @@
 {
-  "name": "04-project-time-working-with-file-based-routing",
+  "name": "08-adding-beckend-code-with-api-routes-fullstack-react",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,13 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.3.0",
+    "next": "13.1.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "swr": "^2.0.3"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "eslint": "8.23.1",
-    "eslint-config-next": "12.3.0"
+    "eslint": "8.33.0",
+    "eslint-config-next": "13.1.6"
   }
 }
