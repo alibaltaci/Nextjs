@@ -22,6 +22,12 @@ export default function handler( req, res ){
     }
 
     if( req.method === "GET" ){
+        const dummyList = [
+            { id:"c1", name:"Ali", text: "A first comment." },
+            { id:"c2", name:"Hasan", text: "A second comment." },
+            { id:"c3", name:"Tuncay", text: "A third comment." },
+        ]
 
+        res.status(200).json({ comments: dummyList })
     }
 }
