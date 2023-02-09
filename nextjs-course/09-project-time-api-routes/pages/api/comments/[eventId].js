@@ -29,19 +29,26 @@ export default async function handler( req, res ){
         console.log( result );
 
         newComment.id = result.insertedId; // mongodb 'nin bize verdiği id.
-        
+
         res.status(201).json({ message: "Added Comment.", comment: newComment  })
         
     }
 
     if( req.method === "GET" ){
-        const dummyList = [
-            { id:"c1", name:"Ali", text: "A first comment." },
-            { id:"c2", name:"Hasan", text: "A second comment." },
-            { id:"c3", name:"Tuncay", text: "A third comment." },
-        ]
+        // const dummyList = [
+        //     { id:"c1", name:"Ali", text: "A first comment." },
+        //     { id:"c2", name:"Hasan", text: "A second comment." },
+        //     { id:"c3", name:"Tuncay", text: "A third comment." },
+        // ]
 
-        res.status(200).json({ comments: dummyList })
+        const db = client.db()
+
+        const documents = await db.collection('comments')
+            .find()  
+            .sort( { _id:-1 } )   //azalan sıralamak için. İlk yorum sona gelecek şekilde.
+            .toArray()  // array 'e çevirmek için
+
+        res.status(200).json({ comments: documents })
     }
 
     client.close()
