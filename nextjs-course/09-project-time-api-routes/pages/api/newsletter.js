@@ -1,19 +1,22 @@
-import { MongoClient } from 'mongodb'
+// import { MongoClient } from 'mongodb'
+import { connectDatabase, insertDocument } from '../../helpers/db-util'
 
-async function connectDatabase(){
+// bu fonksiyonlar halpers/db-util.js 'e taşınmıştır.
+
+// async function connectDatabase(){
     
-    const client = await MongoClient.connect('mongodb+srv://ali:gOyn1RsYIbNvcW0t@cluster0.o5yxamt.mongodb.net/events?retryWrites=true&w=majority')
+//     const client = await MongoClient.connect('mongodb+srv://ali:gOyn1RsYIbNvcW0t@cluster0.o5yxamt.mongodb.net/events?retryWrites=true&w=majority')
 
-    return client
-}
+//     return client
+// }
 
-async function insertDocument( client, document ){
+// async function insertDocument( client, document ){
 
-    const db = client.db()
+//     const db = client.db()
 
-    await db.collection( 'newsletter' ).insertOne( document )
+//     await db.collection( 'newsletter' ).insertOne( document )
 
-}
+// }
 
 export default async function( req, res ){
 
@@ -47,7 +50,7 @@ export default async function( req, res ){
         }
 
         try{
-            await insertDocument( client, {email: userEmail, date: new Date().toDateString() } )
+            await insertDocument( client, 'newsletter', {email: userEmail, date: new Date().toDateString() } )
             client.close()
         }catch(error){
             res.status(500).json({message: 'Inserting data failed'})  //sunucu tarafında bir şeylerin ters gittiğini gösterir.
