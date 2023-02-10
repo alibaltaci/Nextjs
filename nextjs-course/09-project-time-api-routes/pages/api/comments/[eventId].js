@@ -64,7 +64,7 @@ export default async function handler( req, res ){
         //     .toArray()  // array 'e çevirmek için
 
         try{
-            const documents = await getAllDocuments( client, 'comments', {_id: -1} )
+            const documents = await getAllDocuments( client, 'comments', {_id: -1}, {eventId: eventId} )
             res.status(200).json({ comments: documents })
         }catch(error){
             res.status(500).jsson( {message: 'Getting comments failed!'} )

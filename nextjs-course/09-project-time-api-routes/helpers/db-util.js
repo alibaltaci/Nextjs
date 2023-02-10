@@ -17,12 +17,13 @@ export async function insertDocument( client, collection, document ){
 
 }
 
-export async function getAllDocuments(client, collection, sort){
+export async function getAllDocuments(client, collection, sort, 
+    filter={}){  // {} tüm datayı alamak için eventId. {eventId: eventId} database içindeki eventId 'si dinamik olarak gelen eventId 'mize eşit olanlar.
 
     const db = client.db()
 
     const documents = await db.collection( collection ) //'comments'
-        .find()  
+        .find( filter )  
         .sort( sort )
         .toArray() 
 
