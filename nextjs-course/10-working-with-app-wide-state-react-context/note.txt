@@ -1,0 +1,3 @@
+database --> mongoDB
+
+for data url --> connect --> coonect your application 
