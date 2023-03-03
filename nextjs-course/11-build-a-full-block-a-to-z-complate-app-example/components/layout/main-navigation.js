@@ -24,7 +24,7 @@ export default function MainNavigation( ){
                 <ul>
                     {
                         dummyData.map( data => (
-                            <li>
+                            <li key={data.link} id={data.text}>
                                 <Link href={ data.link }>{ data.text }</Link>
                             </li>
                         ) )
