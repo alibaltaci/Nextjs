@@ -1,5 +1,7 @@
+import calsses from './logo.module.css'
+
 export default function Logo(){
      return(
-        <p>Ali</p>
+        <div className={ calsses.logo }>Home</div>
      )
 }

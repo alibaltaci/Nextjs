@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Logo from './logo'
+import classes from './main-navigation.module.css'
 
 const dummyData = [
     {
@@ -15,7 +16,7 @@ const dummyData = [
 export default function MainNavigation( ){
 
     return(
-        <header>
+        <header className={ classes.header } >
             <Link href='/' id='link'>
                     <Logo />
             </Link>
