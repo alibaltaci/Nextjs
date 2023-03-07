@@ -12,3 +12,7 @@
 npm install react-markdown
 
 import ReactMarkdown from 'react-markdown'
+
+- Markdown metadatalar için 
+
+npm install gray-matter
