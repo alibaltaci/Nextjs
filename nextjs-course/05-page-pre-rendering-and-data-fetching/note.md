@@ -36,8 +36,8 @@
 
 ## uayarı
 
-* önceden yüklenmemiş sayfalara tıklayarak değilde arama çubuğundan manuel olarak gitmeye çalışırsak hata alırız.
-* bunun sebebebi dynamic pre-generation işleminin biraz zaman olamasından kaynaklanmaktadır.
+* önceden yüklenmemiş sayfalara tıklayarak değil de arama çubuğundan manuel olarak gitmeye çalışırsak hata alırız.
+* bunun sebebebi dynamic pre-generation işleminin biraz zaman almasından kaynaklanmaktadır.
 * Bu sorunu çözebilmek için bir loading fonksiyonu yazılabilir.
 
  * "blocking" --> Sayfanın sunucuda tamamen oluşturulması için Nextjs bekleyecek. Biraz daha uzun süren bir yaöntemdir. Verilerin alınmasının daha uzun sürdüğü durumlarda kullanıcılara eksik sayfa göstermememk için kullanılabilcek bir yöntemdir.
