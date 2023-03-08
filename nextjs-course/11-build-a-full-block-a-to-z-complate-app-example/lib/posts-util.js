@@ -1,12 +1,14 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+// const fs = require('fs');
 
-const postsDirectory = path.join( process.cwd(), 'data' )
+const postsDirectory = path.join( process.cwd(), 'posts' )
 
 function getPostData( fileName ){
+    
     const filePath = path.join( postsDirectory, fileName )
-    const fileContent =  fs.readdirSync( filePath, 'utf-8' ) //unicode karakterleri desteklemek için ikinci argüman
+    const fileContent = fs.readFileSync( filePath, 'utf-8' ) //unicode karakterleri desteklemek için ikinci argüman
     const { data, content } = matter( fileContent )
 
     const postSlug = fileName.replace(/\.md$/, '') // removes the file extension
@@ -17,6 +19,8 @@ function getPostData( fileName ){
         // content: content
         content,
     }
+    
+    return postData
 }
 
 export function getAllPosts(){
