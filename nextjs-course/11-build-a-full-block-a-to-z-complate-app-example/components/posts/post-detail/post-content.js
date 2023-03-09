@@ -2,8 +2,8 @@ import ReactMarkdown from 'react-markdown'
 import PostHeader from './post-header'
 import classes from './post-content.module.css'
 import Image from 'next/image'
-
-
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 export default function PostContent(props){
 
@@ -46,6 +46,21 @@ export default function PostContent(props){
             // img harici içerikleri (paragraf) dönmek için
             return(
                 <p>{ par.children }</p>
+            )
+        },
+
+        code(code){
+
+            const { className, children } = code 
+
+            const language = className.split('-')[1] // className is something like language-js => We need the "js" part here
+
+            return(
+                <SyntaxHighlighter
+                    style={atomDark}
+                    language={language}  // ```js
+                    children={children}
+                />
             )
         }
     }
