@@ -4,7 +4,7 @@ export default function hendler(req, res){
 
         const { email, name, message } = req.body
 
-        if( !email || !email.includes('@') || !mame || name.trim() === '' || !message || message.trim() === '' ){
+        if( !email || !email.includes('@') || !name || name.trim() === '' || !message || message.trim() === '' ){
             
             res.status(422).json( {message: 'Invalid Input.'} )
             return;
