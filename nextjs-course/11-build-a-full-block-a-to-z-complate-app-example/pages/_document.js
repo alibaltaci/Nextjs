@@ -9,6 +9,7 @@ export default class MyDocument extends Document{
                 <body>
                     <Main />
                     <NextScript />
+                    <div id='notification' /> {/* Portal oluşturmak için --> notification.js --> contact sayfası için. Bu bir react özelliğidir. */}
                 </body>
             </Html>
         )
