@@ -18,4 +18,9 @@
 * API routes, server-side pages, page revalidation varsa bunu kullanmak zordur.
 * Bunları yürütmek için kod gerekir. Sunucu yoksa zordur.
 
+# process.env (undefined) errer için 
+
+next.config.js 'ye env eklemesi yapıldıktan sonra tekrardan başlatılması gererkir.
+
+https://stackoverflow.com/questions/66137368/next-js-environment-variables-are-undefined-next-js-10-0-5
 

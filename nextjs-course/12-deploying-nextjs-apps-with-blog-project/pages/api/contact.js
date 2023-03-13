@@ -20,8 +20,11 @@ export default async function hendler(req, res){
 
         let client;
 
+        const connectionString = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.5yepgxo.mongodb.net/${process.env.mongodb_database}`
+
+        console.log(connectionString)
         try{
-            client = await MongoClient.connect('mongodb+srv://ali:DBboB2dV1BXcuX1z@cluster0.5yepgxo.mongodb.net/my-blog?retryWrites=true&w=majority')
+            client = await MongoClient.connect(connectionString)
             // .then() // async await yerine bu şekilde de kullanılabilirdi.
         }catch(error){
             res.status(500) //sunucu hataları için durum kodu
