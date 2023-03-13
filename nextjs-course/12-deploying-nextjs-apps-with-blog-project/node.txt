@@ -1,0 +1,21 @@
+# Deploy #
+
+1. Standard build 
+
+    - next build
+
+2. Full stattic build
+
+- next export 
+
+* Sdece server side kodu gererktirmeyen yerlerde iyi çalışır.
+
+- package.json --> 'scripts' --> export : next export ==> isimlendirme opsiyonel
+
+* %100 static. Sadece HTML, CSS, JS 
+* NodeJS sunucusuna ihtiyaç yok
+
+* API routes, server-side pages, page revalidation varsa bunu kullanmak zordur.
+* Bunları yürütmek için kod gerekir. Sunucu yoksa zordur.
+
+
