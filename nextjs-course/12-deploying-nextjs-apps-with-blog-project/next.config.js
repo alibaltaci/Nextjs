@@ -8,7 +8,7 @@ module.exports = (phase) =>  {
         return{
             env:{
                 mongodb_username: 'ali',
-                mongodb_password: 'DBboB2dV1BXcuX1z',
+                mongodb_password: '5RfnGEhePap6ULAM',
                 mongodb_clustername: 'cluster0',
                 mongodb_database: 'my-blog-dev' //farkı bir isim kullandık
             }
@@ -18,7 +18,7 @@ module.exports = (phase) =>  {
     return{
         env:{
             mongodb_username: 'ali',
-            mongodb_password: 'DBboB2dV1BXcuX1z',
+            mongodb_password: '5RfnGEhePap6ULAM',
             mongodb_clustername: 'cluster0',
             mongodb_database: 'my-blog'
         }

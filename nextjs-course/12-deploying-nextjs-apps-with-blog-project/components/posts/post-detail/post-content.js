@@ -2,8 +2,21 @@ import ReactMarkdown from 'react-markdown'
 import PostHeader from './post-header'
 import classes from './post-content.module.css'
 import Image from 'next/image'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+
+// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter' //657.9k
+// yukarıdaki büyük boyutlu paket yerine
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+
+// import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism' //156.6k
+import atomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark'
+
+// küçük boyutlu paketleri import ettiğimiz için dilleri de import etmemiz lazım
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css'
+
+// kullanmak istediğimiz tüm dilleri aşağıdaki şekilde kaydediyoruz.
+SyntaxHighlighter.registerLanguage('js', js)
+SyntaxHighlighter.registerLanguage('css', css)
 
 export default function PostContent(props){
 
