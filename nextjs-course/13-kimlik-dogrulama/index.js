@@ -1,1 +1,1 @@
-// new section
+// new section - kimlik doğrulama 
