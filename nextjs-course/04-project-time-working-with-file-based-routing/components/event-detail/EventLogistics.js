@@ -1,4 +1,4 @@
-import LogisticsItem from "../../event-d/logistics-item";
+import LogisticsItem from "./LogisticsItem";
 import DateIcon from "../icons/DateIcon";
 import AddressIcon from "../icons/AddressIcon";
 import classes from "./EventLogistics.module.css";
