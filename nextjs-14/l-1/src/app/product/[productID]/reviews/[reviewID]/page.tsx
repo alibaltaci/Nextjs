@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation"
 
 interface ReviewDetailProps{
     params:{
@@ -5,7 +6,13 @@ interface ReviewDetailProps{
         reviewID: string
     }
 }
+
 const ReviewDetail = ({ params }:ReviewDetailProps ) => {
+
+  if( parseInt(params.reviewID) > 1000){
+    notFound()
+  }
+
   return (
     <div>
         <h1>Review Detail</h1>
