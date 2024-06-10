@@ -1,3 +1,5 @@
+"use client"
+
 import { notFound } from "next/navigation"
 
 interface ReviewDetailProps{
@@ -13,11 +15,11 @@ const getRandomInt = (count: number) => {
 
 const ReviewDetail = ({ params }:ReviewDetailProps ) => {
 
-  const random = getRandomInt(2)
+  // const random = getRandomInt(2)
 
-  if( random === 1){
-    throw new Error("Error loading review")
-  }
+  // if( random === 1){
+  //   throw new Error("Error loading review")
+  // }
 
   if( parseInt(params.reviewID) > 1000){
     notFound()
