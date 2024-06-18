@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useTheme } from '@/components/theme-provider';
+import { clientSideFunction } from '@/utils/client-utils';
 // import './ImageSlider.css';
 
 const ClientRoutePage = () => {
@@ -12,6 +13,7 @@ const ClientRoutePage = () => {
     console.log("Client Route Rendered")
     
     // const result = ServerSideFunction()
+    const result = clientSideFunction()
 
     const theme = useTheme()
 
@@ -23,7 +25,7 @@ const ClientRoutePage = () => {
     <>
         <h1 style={{
           color: theme.colors.primary
-        }}>Client Route Page</h1>
+        }}>Client Route Page { result }</h1>
         <div className="image-slider-container">
       <Slider {...settings}>
         <div>

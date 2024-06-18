@@ -1,4 +1,5 @@
 import ImageSlider from "@/components/imageSlider"
+// import { clientSideFunction } from "@/utils/client-utils"
 import ServerSideFunction from "@/utils/server-utils"
 
 // import Slider from 'react-slick';
@@ -10,6 +11,7 @@ const ServerRoutePage = () => {
     console.log("Server Route Rendered")
 
     const result = ServerSideFunction()
+    // const clientResult = clientSideFunction()
     
     // const settings = {
     //     dots: true,
@@ -19,6 +21,7 @@ const ServerRoutePage = () => {
     <>
         <h1>Server Route Page</h1>
         <p>{ result }</p>
+        {/* <p>{ clientResult }</p> */}
         <ImageSlider />
 
         {/* <div className="image-slider-container">
