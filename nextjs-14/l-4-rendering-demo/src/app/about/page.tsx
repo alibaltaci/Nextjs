@@ -1,7 +1,12 @@
+import { cookies } from "next/headers"
 
 const AboutPage = () => {
 
-    console.log( "About server components" )
+  const cookieStore = cookies()
+  const theme = cookieStore.get("theme")
+  console.log(theme) 
+
+  console.log( "About server components" )
 
   return (
     <div>AboutPage</div>
