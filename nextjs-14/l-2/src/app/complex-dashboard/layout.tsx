@@ -10,7 +10,7 @@ type DashboardLayoutProps = {
 
 const DashboardLayout = ( { children, users, revenue, notifications, login }:DashboardLayoutProps ) => {
 
-  const isLoggedIn = false
+  const isLoggedIn = true
 
   return isLoggedIn ? (
     <>
