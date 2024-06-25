@@ -1,5 +1,6 @@
 import fs from "fs"
 import { ServerComponentTwo } from "./server-component-two"
+import { ReactNode } from "react"
 // import { ClientComponetOne } from "./client-component-one"
 
 export const ServerComponentOne = () => {

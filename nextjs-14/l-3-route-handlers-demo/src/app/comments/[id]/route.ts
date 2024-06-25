@@ -8,17 +8,20 @@ import { comments } from "../data"
 //     }
 // }
 
+
 // GET
 export const GET = async( 
     _request: Request, {params}:{params: {id: string}}
     // {_request, params}: GETProps
 ) => {
 
-    if( parseInt(params.id) > comments.length ){
+    const IntID = parseInt(params.id)
+
+    if( IntID > comments.length ){
         redirect( "/comments" )
     }
 
-    const comment = comments.find( comment => comment.id === parseInt(params.id))
+    const comment = comments.find( comment => comment.id === IntID)
     return Response.json(comment)
 }
 
